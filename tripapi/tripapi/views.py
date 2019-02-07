@@ -2,17 +2,20 @@ from django.shortcuts import render
 from django.http import HttpResponse
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
-#from .models import Post
-from .serializers import DetailSerializer
-#from .forms import PostForm
+from .models import Users, Trip
+from .serializers import DetailSerializer, UserSerializer
 
 
-def home(request):
-    tmpl_vars = {'form': PostForm()}
-    return render(request, 'tripapi/index.html', tmpl_vars)
+class ListUsersView(generics.ListAPIView):
+    queryset = Users.objects.all()
+    serializer_class = UserSerializer
+
+class ListTripsView(generics.ListAPIView):
+    queryset = Trip.objects.all()
+    serializer_class = DetailSerializer
 
 
-@api_view(['GET'])
+'''@api_view(['GET'])
 def detail_collection(request):
     if request.method == 'GET':
         data = Detail.objects.all()
@@ -21,7 +24,7 @@ def detail_collection(request):
 
 
 @api_view(['GET'])
-def detail_elemennt(request, pk):
+def detail_element(request, pk):
     try:
         details = Detail.objects.get(pk=pk)
     except Detail.DoesNotExist:
@@ -29,4 +32,4 @@ def detail_elemennt(request, pk):
 
     if request.method == 'GET':
         serializer = DetailSerializer(details)
-        return Response(serializer.data)
+        return Response(serializer.data)'''
