@@ -2,9 +2,9 @@ from django.shortcuts import render
 from django.http import HttpResponse
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
-from tripapi.models import Post
-from tripapi.serializers import PostSerializer
-from tripapi.forms import PostForm
+#from .models import Post
+from .serializers import DetailSerializer
+#from .forms import PostForm
 
 
 def home(request):
@@ -15,18 +15,18 @@ def home(request):
 @api_view(['GET'])
 def detail_collection(request):
     if request.method == 'GET':
-        posts = Post.objects.all()
-        serializer = PostSerializer(posts, many=True)
+        data = Detail.objects.all()
+        serializer = DetailSerializer(data, many=True)
         return Response(serializer.data)
 
 
 @api_view(['GET'])
 def detail_elemennt(request, pk):
     try:
-        details = Post.objects.get(pk=pk)
-    except Post.DoesNotExist:
+        details = Detail.objects.get(pk=pk)
+    except Detail.DoesNotExist:
         return HttpResponse(status=404)
 
     if request.method == 'GET':
-        serializer = PostSerializer(details)
+        serializer = DetailSerializer(details)
         return Response(serializer.data)

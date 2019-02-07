@@ -1,9 +1,9 @@
 from rest_framework import serializers
-from tripapi.models import Post
+from .models import Details
 
 
-class PostSerializer(serializers.ModelSerializer):
+class DetailSerializer(serializers.ModelSerializer):
 
     class Meta:
-        model = Post
+        model = Details
         fields = ('trip_id', 'driver_name', 'reg_number', 'opening_milage', 'closing_milage', 'destination', 'comments', 'date')
