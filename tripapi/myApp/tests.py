@@ -1,7 +1,7 @@
 from django.urls import reverse
 from rest_framework.test import APITestCase, APIClient
 from rest_framework.views import status
-from .models import Users, Trip
+from .models import User_Details, Trip
 from .serializers import DetailSerializer, UserSerializer
 
 # tests for views

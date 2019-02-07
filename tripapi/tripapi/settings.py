@@ -31,6 +31,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'myApp',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -78,10 +79,10 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'test',
-        'USER':'admin',
+        'USER':'',
         'PASSWORD':'',
-        'HOST':'http://172.20.3.216/phpmyadmin/',
-        'PORT':'80',
+        'HOST':'172.20.3.216',
+        'PORT':'3306',
     }
 }
 

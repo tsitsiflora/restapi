@@ -15,16 +15,13 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.conf.urls import url
-from .views import home, detail_collection, detail_elemennt
+#from myApp.views import ListUsersView, ListTripView
 
 urlpatterns = [
     url('admin/', admin.site.urls),
-    url(r'^$', home, 'home'),
     
     #api urls
-    url(r'^api/v1/tripdetails/$', detail_collection, 'detail_collection'),
-    url(r'^api/v1/posts/(?P<pk>[0-9]+)$', detail_element, 'detail_element'),
-
+    
 ]
 
 

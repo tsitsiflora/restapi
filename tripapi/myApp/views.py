@@ -2,12 +2,13 @@ from django.shortcuts import render
 from django.http import HttpResponse
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
-from .models import Users, Trip
+from rest_framework import generics
+from .models import User_Details, Trip
 from .serializers import DetailSerializer, UserSerializer
 
 
 class ListUsersView(generics.ListAPIView):
-    queryset = Users.objects.all()
+    queryset = User_Details.objects.all()
     serializer_class = UserSerializer
 
 class ListTripsView(generics.ListAPIView):

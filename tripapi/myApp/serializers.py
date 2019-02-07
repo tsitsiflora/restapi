@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import Users, Trip
+from .models import User_Details, Trip
 
 
 class DetailSerializer(serializers.ModelSerializer):
@@ -12,5 +12,5 @@ class DetailSerializer(serializers.ModelSerializer):
 class UserSerializer(serializers.ModelSerializer):
 
     class Meta:
-        model = Users
+        model = User_Details
         fields = ('user_id', 'name', 'username', 'password')
