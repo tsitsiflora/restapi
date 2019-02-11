@@ -1,36 +1,19 @@
-from django.shortcuts import render
-from django.http import HttpResponse
-from rest_framework.decorators import api_view
 from rest_framework.response import Response
-from rest_framework import generics
+from rest_framework.views import APIView
 from .models import User_Details, Trip
-from .serializers import DetailSerializer, UserSerializer
+from .serializers import UserSerializer, TripSerializer
 
 
-class ListUsersView(generics.ListAPIView):
-    queryset = User_Details.objects.all()
-    serializer_class = UserSerializer
+class ListUsersView(APIView):
+    def get(self, request):
+        users = User_Details.objects.all()
+        serializer = UserSerializer(users, many=True)
+        return Response({"users": serializer.data})
+    
 
-class ListTripsView(generics.ListAPIView):
-    queryset = Trip.objects.all()
-    serializer_class = DetailSerializer
-
-
-'''@api_view(['GET'])
-def detail_collection(request):
-    if request.method == 'GET':
-        data = Detail.objects.all()
-        serializer = DetailSerializer(data, many=True)
-        return Response(serializer.data)
-
-
-@api_view(['GET'])
-def detail_element(request, pk):
-    try:
-        details = Detail.objects.get(pk=pk)
-    except Detail.DoesNotExist:
-        return HttpResponse(status=404)
-
-    if request.method == 'GET':
-        serializer = DetailSerializer(details)
-        return Response(serializer.data)'''
+class ListTripsView(APIView):
+    def get(self, request):
+        trips = Trip.objects.all()
+        serializer = TripSerializer(trips, many=True)
+        return Response({"trips": serializer.data})
+    

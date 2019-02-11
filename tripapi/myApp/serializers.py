@@ -1,16 +1,20 @@
 from rest_framework import serializers
-from .models import User_Details, Trip
 
 
-class DetailSerializer(serializers.ModelSerializer):
+class UserSerializer(serializers.Serializer):
+    user_id = serializers.IntegerField()
+    username = serializers.CharField(max_length=255)
+    name = serializers.CharField(max_length=255)
+    password = serializers.CharField()
 
-    class Meta:
-        model = Trip
-        fields = ('trip_id', 'driver_name', 'reg_number', 'opening_milage', 'closing_milage',
-             'destination', 'comments', 'date')
+class TripSerializer(serializers.Serializer):
+    trip_id = serializers.IntegerField()
+    driver_name = serializers.CharField(max_length=255)
+    reg_number = serializers.CharField(max_length=255)
+    opening_milage = serializers.IntegerField()
+    closing_milage = serializers.IntegerField()
+    destination = serializers.CharField(max_length=255)
+    comments = serializers.CharField(max_length=500)
+    date = serializers.DateField()
 
-class UserSerializer(serializers.ModelSerializer):
 
-    class Meta:
-        model = User_Details
-        fields = ('user_id', 'name', 'username', 'password')
