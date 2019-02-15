@@ -132,3 +132,5 @@ REST_FRAMEWORK = {
         'rest_framework.parsers.FormParser',
     )
 }
+
+STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'
