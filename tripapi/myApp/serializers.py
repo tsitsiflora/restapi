@@ -8,6 +8,9 @@ class UserSerializer(serializers.Serializer):
     name = serializers.CharField(max_length=255)
     password = serializers.CharField()
 
+    def create(self, validated_data):
+        return User_Details.objects.create(**validated_data)
+
 class TripSerializer(serializers.Serializer):
     trip_id = serializers.IntegerField()
     driver_name = serializers.CharField(max_length=255)
