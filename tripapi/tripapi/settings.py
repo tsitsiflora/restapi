@@ -25,7 +25,7 @@ SECRET_KEY = 'h-*4wc)y268ffe9gb*@$((g)pyitzywe+vm)bk-09_=0m7erwd'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['172.20.1.119', 'localhost']
 
 
 # Application definition
@@ -133,4 +133,4 @@ REST_FRAMEWORK = {
     )
 }
 
-STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'
+#STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'
