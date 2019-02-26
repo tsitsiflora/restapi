@@ -12,6 +12,8 @@ class UsersView(APIView):
         serializer = UserSerializer(users, many=True)
         return Response({"users": serializer.data})
 
+class PostUsersView(APIView):
+
     def post(self, request, format=None):
         serializer = UserSerializer(data=request.data)
         if serializer.is_valid():
@@ -44,6 +46,8 @@ class TripsView(APIView):
         trips = Trip.objects.all()
         serializer = TripSerializer(trips, many=True)
         return Response({"trips": serializer.data})
+
+class PostTripsView(APIView):
 
     def post(self, request, format=None):
         serializer = TripSerializer(data=request.data)
