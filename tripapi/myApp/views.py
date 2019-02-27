@@ -10,7 +10,7 @@ class UsersView(APIView):
     def get(self, request):
         users = User_Details.objects.all()
         serializer = UserSerializer(users, many=True)
-        return Response({"users": serializer.data})
+        return Response(serializer.data)
 
 class PostUsersView(APIView):
 
@@ -45,7 +45,7 @@ class TripsView(APIView):
     def get(self, request):
         trips = Trip.objects.all()
         serializer = TripSerializer(trips, many=True)
-        return Response({"trips": serializer.data})
+        return Response(serializer.data)
 
 class PostTripsView(APIView):
 
