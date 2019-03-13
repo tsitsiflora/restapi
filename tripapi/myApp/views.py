@@ -69,10 +69,10 @@ class EditTripsView(APIView):
         serializer = TripSerializer(trip)
         return Response(serializer.data)
 
-    def put(self, request, pk, format=None):
+    def patch(self, request, pk, format=None):
         trip = self.get_object(pk=pk)
-        serializer = TripSerializer(trip, data=request.data)
-        if serializer.is_valid():
+        serializer = TripSerializer(trip, data=request.data, partial=True)
+        if serializer.is_valid(raise_exception=True):
             serializer.save()
             return Response(serializer.data)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
